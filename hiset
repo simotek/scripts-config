@@ -1,0 +1,14 @@
+#!/bin/bash
+function hiset()
+{
+    # TBD: implement http://stackoverflow.com/questions/14786984/best-way-to-parse-cmdline-args-bash 
+    # and move history into this command
+	export HISTFILE="$HOME/.bash_history_hiset_$1"
+	export HISET=$1
+	export PROMPT_COMMAND='history -a'
+}
+
+#only call the function directly if args are passed, other wise it was probably sourced
+if [[! -z "$1" ]]; then
+    hiset $1
+fi

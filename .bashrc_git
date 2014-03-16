@@ -1,0 +1,7 @@
+# Simotek - my parts of bashrc shared across multiple machines
+
+# load hiset (Multiple History support)
+source(hiset)
+export PS1="\[$(ppwd)\]\u@\h-\[$(echo $HISET)\]:\w>"
+
+export PATH=~/bin:$PATH
