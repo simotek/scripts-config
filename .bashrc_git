@@ -48,8 +48,8 @@ if [ $? -eq 0 ]; then \
   else \
     # @5 - Changes to working tree
     echo "'$PMT_IRed'"$(__git_ps1 " {%s}"); \
-  fi) '$PMT_BYellow$PathShort$PMT_Color_Off$PMT_Purple'\$> '$PMT_Color_Off'"; \
+  fi) '$PMT_BYellow$PathShort$PMT_Color_Off$PMT_Purple' \$> '$PMT_Color_Off'"; \
 else \
   # @2 - Prompt when not in GIT repo
-  echo " '$PMT_Yellow$PathShort$PMT_Color_Off$PMT_Purple'\$> '$PMT_Color_Off'"; \
+  echo " '$PMT_Yellow$PathShort$PMT_Color_Off$PMT_Purple' \$> '$PMT_Color_Off'"; \
 fi)'
