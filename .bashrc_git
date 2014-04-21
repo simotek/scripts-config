@@ -1,7 +1,55 @@
 # Simotek - my parts of bashrc shared across multiple machines
+#
+# Usage: 
+#     export CONFIG_DIR=$HOME/src/scripts-config
+#     source $CONFIG_DIR/.bashrc_git
 
 # load hiset (Multiple History support)
-source hiset
-export PS1="\[$(ppwd)\]\u@\h-\[$(echo $HISET)\]:\w>"
+source $CONFIG_DIR/hiset
 
-export PATH=~/bin:$PATH
+
+# original HISET prompt for reference
+#export PS1="\[$(ppwd)\]\u@\h-\[$(echo $HISET)\]:\w>"
+
+# I almost always want these i my path
+export PATH=~/bin:$PATH:/sbin:/usr/sbin
+
+
+#  Customize BASH PS1 prompt to show current GIT repository and branch.
+#  by Mike Stewart - http://MediaDoneRight.com
+# http://mediadoneright.com/content/ultimate-git-ps1-bash-prompt
+
+# source colors separatly to tidy it up
+source $CONFIG_DIR/.colors
+
+# Various variables you might want for your PS1 prompt instead
+Time12h="\T"
+Time12a="\@"
+PathShort="\w"
+PathFull="\W"
+NewLine="\n"
+Jobs="\j"
+
+
+# This PS1 snippet was adopted from code for MAC/BSD I saw from: http://allancraig.net/index.php?option=com_content&view=article&id=108:ps1-export-command-for-git&catid=45:general&Itemid=96
+# I tweaked it to work on UBUNTU 11.04 & 11.10 plus made it mo' better
+
+# I made it like a normal prompt and added HISET support
+export PS1=$PMT_IGreen'\u'$PMT_Color_Off$PMT_Purple@$PMT_Color_Off$PMT_IBlue'\h'$PMT_Color_Off$PMT_Purple'$(\
+if [ -n "$HISET" ]; then \
+    echo  " ['$PMT_ICyan'$HISET'$PMT_Color_Off$PMT_Purple']"; \
+fi \
+)'$PMT_Color_Off'$(git branch &>/dev/null;\
+if [ $? -eq 0 ]; then \
+  echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
+  if [ "$?" -eq "0" ]; then \
+    # @4 - Clean repository - nothing to commit
+    echo "'$PMT_Green'"$(__git_ps1 " (%s)"); \
+  else \
+    # @5 - Changes to working tree
+    echo "'$PMT_IRed'"$(__git_ps1 " {%s}"); \
+  fi) '$PMT_BYellow$PathShort$PMT_Color_Off$PMT_Purple'\$> '$PMT_Color_Off'"; \
+else \
+  # @2 - Prompt when not in GIT repo
+  echo " '$PMT_Yellow$PathShort$PMT_Color_Off$PMT_Purple'\$> '$PMT_Color_Off'"; \
+fi)'

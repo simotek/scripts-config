@@ -6,9 +6,11 @@ function hiset()
 	export HISTFILE="$HOME/.bash_history_hiset_$1"
 	export HISET=$1
 	export PROMPT_COMMAND='history -a'
+	# you may want your history file in your prompt
+	#export PS1="\[$(ppwd)\]\u@\h-\[$(echo $HISET)\]:\w>"
 }
 
 #only call the function directly if args are passed, other wise it was probably sourced
-if [[! -z "$1" ]]; then
-    hiset $1
-fi
+#if [[ ! -z "$1" ]]; then
+#    hiset $1
+#fi
