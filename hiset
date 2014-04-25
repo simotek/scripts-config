@@ -31,7 +31,7 @@
 function __hst_help()
 {
     echo -e "  hiset - A bash history file manager"
-    echo -e "\t Version 0.0.0b01"
+    echo -e "\t Version 0.0.1b01"
     echo -e "-------------------------------------\n"
     echo -e "  Usage:"
     echo -e "\t hiset [name]\t\t Switchs to history with given session name"
