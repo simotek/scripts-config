@@ -187,7 +187,7 @@ function hiset()
     elif [ $HST_HELP -eq 1 ] ; then
         __hst_help
     elif [ $HST_HISTORY -eq 1 ] ; then
-        __hst_history_sort
+        __hst_history
     elif [ $HST_LIST -eq 1 ] ; then
         pushd $LOCAL_DIR >/dev/null
         for F in `find . -maxdepth 1 -name "$LOCAL_PREFIX*"`; do
