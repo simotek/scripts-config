@@ -1,0 +1,68 @@
+.\" Manpage for hiset.
+.\" Contact simon@simotek.net to correct errors or typos.
+.TH man 1 "26 April 2014" "0.0.1" "hiset man page"
+.SH NAME
+.B hiset
+\- a program for managing and swapping between history files in 
+.B bash.
+.SH SYNOPSIS
+.B hiset 
+session name
+\n
+.B hiset [
+option
+.B ] [
+session name
+.B ]
+.SH DESCRIPTION
+.B hiset 
+(history set) pronounced hi-set is a simple script to manage multiple history files, it works by manipulating
+.B HISFILE
+meaning that the history command can work as normal within the current session
+.SH OPTIONS
+.IP -D 
+name
+Deletes history file with the given 
+.I name 
+if it exists
+.IP --delete
+name
+The same as -D
+.IP -h       
+Prints this help, See man hiset for more info
+.IP --help
+The same as -h
+.IP -H       
+Prints the history of all sessions, to print the current session history use the history command
+.IP --history
+The same as -H
+.IP -l          
+Lists all known sessions.
+.IP --list
+The same as -l
+.IP -r       
+Resets history to use standard .bash_history file
+.IP --reset
+The same as -r
+.IP -s 
+name
+Searches for name in all history files
+.IP --search 
+name
+The same as -s
+.SH Environment
+.B HISET
+The current session name.
+
+.B HISET_PREFIX
+The prefix given to all history files, defaults to ".bash_history_hiset_"
+
+.B HISET_DIR
+The directory where history files are stored, defaults to 
+.B HOME
+.SH SEE ALSO
+history(1), bash(1)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Simon Lees (simon@simotek.net)
