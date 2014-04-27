@@ -7,7 +7,8 @@ Scripts /  config files that i use across multiple machines, includes the hiset 
 Hiset
 =====
 
-hiset (history set) pronounced hi-set is a simple script to manage multiple history files, it works by manipulating __$HISFILE__ meaning that the history command can work as normal within the current session
+hiset (history set) pronounced hi-set is a simple script to manage multiple history files, it works by manipulating __$HISFILE__ meaning that the history command can work as normal within the current session>
+It also includes tab completion for everything to make life easier.
 
 
 Installation
