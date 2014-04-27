@@ -24,22 +24,22 @@ PS1="$PS1 $(echo $HISET)"
 
 Usage
 -----
-hiset [name]            Switchs to history with given session name
-hiset -l                Lists all known sessions
-hiset --history         Lists complete history of all sessions
-hiset --search [name]   Searches for the string name in all history files
+hiset [name]            Switchs to history with given session name  
+hiset -l                Lists all known sessions  
+hiset --history         Lists complete history of all sessions  
+hiset --search [name]   Searches for the string name in all history files  
 
 Arguments
 ---------
--D  --delete [name] Deletes history file with the given name if it exists
--h  --help          Prints this help, See man hiset for more info
--H  --history       Prints the history of all sessions, to print the current session history use the history command
--l  --list          Lists all known sessions.
--r  --reset         Resets history to use standard .bash_history file
--s  --search [name] Searches for name in all history files
+-D  --delete [name] Deletes history file with the given name if it exists  
+-h  --help          Prints this help, See man hiset for more info  
+-H  --history       Prints the history of all sessions, to print the current session history use the history command  
+-l  --list          Lists all known sessions.  
+-r  --reset         Resets history to use standard .bash_history file  
+-s  --search [name] Searches for name in all history files  
 
 Variables
 ---------
-$HISET\t\t\t The current session name.
-$HISET_PREFIX\t\t\t The prefix given to all history files, defaults to ".bash_history_hiset_"
-$HISET_DIR\t\t\t The directory where history files are stored, defaults to "$HOME"
+$HISET              The current session name.  
+$HISET_PREFIX       The prefix given to all history files, defaults to ".bash_history_hiset_"  
+$HISET_DIR          The directory where history files are stored, defaults to "$HOME"  
