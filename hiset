@@ -181,8 +181,8 @@ function hiset()
     if [ $HST_INVALID -eq 1 ] ; then
         echo "Invalid option: see --help"
     elif [ $HST_DELETE -eq 1 ] ; then
-        if [ -f "$HOME/$LOCAL_PREFIX$HST_DELETE_PARAM" ]; then
-            rm "$HOME/$LOCAL_PREFIX$HST_DELETE_PARAM"
+        if [ -f "$LOCAL_DIR/$LOCAL_PREFIX$HST_DELETE_PARAM" ]; then
+            rm "$LOCAL_DIR/$LOCAL_PREFIX$HST_DELETE_PARAM"
         fi
     elif [ $HST_HELP -eq 1 ] ; then
         __hst_help
@@ -212,7 +212,7 @@ function hiset()
             # flush existing history if it is the first time running
             history -a
                         
-            export HISTFILE="$HOME/$LOCAL_PREFIX$1"
+            export HISTFILE="$LOCAL_DIR/$LOCAL_PREFIX$1"
             export HISET=$1
         else
             export HISTFILE="$HOME/.bash_history"
