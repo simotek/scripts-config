@@ -209,11 +209,20 @@ function hiset()
         __hiset_search $HST_SEARCH_PARAM
     else
         if [ -n $1 ]; then
-            # flush existing history if it is the first time running
+            # Write current history to existing history file
             history -a
+            
+            # Make new directory if it doesn't exist
+            mkdir -p $LOCAL_DIR
                         
             export HISTFILE="$LOCAL_DIR/$LOCAL_PREFIX$1"
             export HISET=$1
+            
+            # touch the new file to make sure it exists
+            touch $HISTFILE
+            # load new history file
+            history -r $HISTFILE
+            
         else
 	    history -a
         
