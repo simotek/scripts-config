@@ -215,10 +215,11 @@ function hiset()
             export HISTFILE="$LOCAL_DIR/$LOCAL_PREFIX$1"
             export HISET=$1
         else
+	    history -a
+        
             export HISTFILE="$HOME/.bash_history"
             export HISET=""
         fi
-        export PROMPT_COMMAND='history -a'
     fi
     
     # TBD: implement http://stackoverflow.com/questions/14786984/best-way-to-parse-cmdline-args-bash 
