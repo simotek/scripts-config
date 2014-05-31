@@ -5,7 +5,7 @@
 #     source $CONFIG_DIR/.bashrc_git
 
 # load hiset (Multiple History support)
-source $CONFIG_DIR/hiset
+source $CONFIG_DIR/hiset.sh
 
 
 # original HISET prompt for reference
