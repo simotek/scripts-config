@@ -75,7 +75,7 @@ function __hst_history()
     grep  -n -T --binary-files=text "" $HOME/.bash_history
     
     pushd $LOCAL_DIR >/dev/null
-    for F in `find . -maxdepth 1 -name "$LOCAL_PREFIX*"`; do
+    for F in $(find . -maxdepth 1 -name "$LOCAL_PREFIX*"); do
         # Leave $HISET till last
         local CUT_FILE=${F#${F:0:${#LOCAL_PREFIX}+2}}
         if [ "$CUT_FILE"!="$HISET" ]; then
@@ -114,7 +114,7 @@ function __hiset_search()
     cat $HOME/.bash_history | grep  -n --label=".bash_history" -H -T --binary-files=text "$1"
     
     pushd $LOCAL_DIR >/dev/null
-    for F in `find . -maxdepth 1 -name "$LOCAL_PREFIX*"`; do
+    for F in $(find . -maxdepth 1 -name "$LOCAL_PREFIX*"); do
         # Leave $HISET till last
         local CUT_FILE=${F#${F:0:${#LOCAL_PREFIX}+2}}
         local TMP_COUNT=$(grep -c $1 $F)
@@ -191,7 +191,7 @@ function hiset()
         __hst_history
     elif [ $HST_LIST -eq 1 ] ; then
         pushd $LOCAL_DIR >/dev/null
-        for F in `find . -maxdepth 1 -name "$LOCAL_PREFIX*"`; do
+        for F in $(find . -maxdepth 1 -name "$LOCAL_PREFIX*"); do
             # Leave $HISET till last
             local CUT_FILE=${F#${F:0:${#LOCAL_PREFIX}+2}}
             
@@ -254,7 +254,7 @@ function _hiset()
 
     local HST_COMP=""
     pushd $LOCAL_DIR >/dev/null
-        for F in `find . -maxdepth 1 -name "$LOCAL_PREFIX*"`; do
+        for F in $(find . -maxdepth 1 -name "$LOCAL_PREFIX*"); do
             # Leave $HISET till last
             local CUT_FILE=${F#${F:0:${#LOCAL_PREFIX}+2}}
             
