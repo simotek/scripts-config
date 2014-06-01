@@ -111,7 +111,7 @@ function __hiset_search()
     export GREP_COLORS='se=30'
     
     # First Print out original .bash_history
-    cat $HOME/.bash_history | grep  -n --label=".bash_history" -H -T --binary-files=text "$1"
+    cat "$HOME"/.bash_history | grep  -n --label=".bash_history" -H -T --binary-files=text "$1"
     
     pushd $LOCAL_DIR >/dev/null
     for F in $(find . -maxdepth 1 -name "$LOCAL_PREFIX*"); do
@@ -119,7 +119,7 @@ function __hiset_search()
         local CUT_FILE=${F#${F:0:${#LOCAL_PREFIX}+2}}
         local TMP_COUNT=$(grep -c $1 $F)
         if [ $TMP_COUNT -gt 0 ]; then
-            cat $F | grep -n --label="$CUT_FILE" -H -T --binary-files=text "$1"
+            cat "$F" | grep -n --label="$CUT_FILE" -H -T --binary-files=text "$1"
         fi
     done
     popd >/dev/null
