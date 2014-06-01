@@ -170,11 +170,11 @@ function hiset()
     done
     
     local LOCAL_DIR=$HISET_DIR
-    if [[ -z "$LOCAL_DIR" ]]; then
+    if [ -z "$LOCAL_DIR" ]; then
         LOCAL_DIR=$HOME
     fi
     local LOCAL_PREFIX=$HISET_PREFIX
-    if [[ -z "$LOCAL_PREFIX" ]]; then
+    if [ -z "$LOCAL_PREFIX" ]; then
         LOCAL_PREFIX=".bash_history_hiset_"
     fi
        
@@ -244,11 +244,11 @@ function _hiset()
 
 
     local LOCAL_DIR=$HISET_DIR
-    if [[ -z "$LOCAL_DIR" ]]; then
+    if [ -z "$LOCAL_DIR" ]; then
         LOCAL_DIR=$HOME
     fi
     local LOCAL_PREFIX=$HISET_PREFIX
-    if [[ -z "$LOCAL_PREFIX" ]]; then
+    if [ -z "$LOCAL_PREFIX" ]; then
         LOCAL_PREFIX=".bash_history_hiset_"
     fi
 
@@ -272,14 +272,14 @@ function _hiset()
     
     local HST_LONG_OPTS="--delete --help --history --History --list --reset --search"
     local HST_SHORT_OPTS="-D -h -H -l -r -s"
-    if [[ "$cur" == --* ]]; then
-        if [[ "$cur" != "--delete" ]]; then
+    if [ "$cur" == --* ]; then
+        if [ "$cur" != "--delete" ]; then
             COMPREPLY=( $(compgen -W "$HST_LONG_OPTS" -- $cur) )
         fi
     fi
     
-    if [[ "$cur" == -* ]]; then
-        if [[ "$cur" != "--delete" ]]; then
+    if [ "$cur" == -* ]; then
+        if [ "$cur" != "--delete" ]; then
             COMPREPLY=( $(compgen -W "$HST_LONG_OPTS $HST_SHORT_OPTS" -- $cur) )
         fi
     fi
