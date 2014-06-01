@@ -27,6 +27,11 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
+# include the 3 colors i use rather then the whole colors file
+Color_Off="\033[0m"
+
+Yellow="\033[0;33m"
+Blue="\033[0;34m" 
 
 function __hst_help()
 {
@@ -65,13 +70,15 @@ function __hst_history()
         LOCAL_PREFIX=".bash_history_hiset_"
     fi
     
+    34
+    
     # As a hack color the colon black, if someone can figure out how to remove the colon and preserve colors
     # that would be fantastic, i guess i should use awk.
     local TMP_GREP_COLORS=$GREP_COLORS
     export GREP_COLORS='se=30'
     
     # First Print out original .bash_history
-    echo -e "\033[01;34mHistory from \033[01;33m.bash_history\033[00m"
+    echo -e "${Blue}History from ${Yellow}.bash_history${Color_Off}"
     grep  -n -T --binary-files=text "" $HOME/.bash_history
     
     pushd $LOCAL_DIR >/dev/null
@@ -79,7 +86,7 @@ function __hst_history()
         # Leave $HISET till last
         local CUT_FILE=${F#${F:0:${#LOCAL_PREFIX}+2}}
         if [ "$CUT_FILE"!="$HISET" ]; then
-            echo -e "\033[01;34mHistory from \033[01;33m${CUT_FILE}\033[00m"
+            echo -e "${Blue}History from ${Yellow}${CUT_FILE}${Color_Off}"
             grep -n -T --binary-files=text "" $F
         fi
     done
@@ -87,7 +94,7 @@ function __hst_history()
     
     # Print out the current session (Its probably the one the user cares about
     if [ -n "$HISET" ]; then
-        echo -e "\033[01;34mHistory from \033[01;33m${HISET}\033[00m"
+        echo -e "${Blue}History from ${Yellow}${HISET}${Color_Off}"
         grep -n -T --binary-files=text  "" $HOME/$LOCAL_PREFIX$HISET
     fi
     export GREP_COLORS=$TMP_GREP_COLORS
@@ -197,9 +204,9 @@ function hiset()
             
             # output a * next to current
             if [ "$CUT_FILE" == "$HISET" ]; then
-                echo -e "\033[01;33m${CUT_FILE} \033[01;34m*\033[00m"
+                echo -e "${Yellow}${CUT_FILE} ${Blue}*${Color_Off}"
             else
-                echo -e "\033[01;33m${CUT_FILE}\033[00m"
+                echo -e "${Yellow}${CUT_FILE}${Color_Off}"
             fi
         done
         popd >/dev/null
