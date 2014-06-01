@@ -65,8 +65,8 @@ function __hst_history()
         LOCAL_PREFIX=".bash_history_hiset_"
     fi
     
-    # As a hack color the colon black, if someone can figure out how to remove it and preserve colors
-    # that would be fantastic
+    # As a hack color the colon black, if someone can figure out how to remove the colon and preserve colors
+    # that would be fantastic, i guess i should use awk.
     local TMP_GREP_COLORS=$GREP_COLORS
     export GREP_COLORS='se=30'
     
