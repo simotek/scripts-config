@@ -8,8 +8,10 @@ Hiset
 =====
 
 hiset (history set) pronounced hi-set is a simple script to manage multiple history files, it works by manipulating __$HISFILE__ meaning that the history command can work as normal within the current session>
-It also includes tab completion for everything to make life easier.
+It also includes tab completion for everything to make life easier. [Blog about why i made this](http://simotek.net/tech/hiset-multiple-history-files-and-sessions-for-bash-and-other-tinkering/)
 
+
+![Listing history files hiset -l](http://simotek.net/wp-content/gallery/hiset/hiset-list.jpg "Listing history files hiset -l")
 
 Installation
 ------------
@@ -43,3 +45,5 @@ Variables
 $HISET              The current session name.  
 $HISET_PREFIX       The prefix given to all history files, defaults to ".bash_history_hiset_"  
 $HISET_DIR          The directory where history files are stored, defaults to "$HOME"  
+
+![Searching with hiset -s](http://simotek.net/wp-content/gallery/hiset/hiset-search.jpg "Searching with hiset -s")
