@@ -30,6 +30,7 @@
 
 function __hst_help()
 {
+    # try - http://www.tldp.org/LDP/abs/html/here-docs.html thanks to cooper12 on reddit
     echo -e "  hiset - A bash history file manager"
     echo -e "\t Version 0.0.1b01"
     echo -e "--------------------------------------------------------------------------\n"
