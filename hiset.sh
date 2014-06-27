@@ -37,7 +37,7 @@ function __hst_help()
 {
     # try - http://www.tldp.org/LDP/abs/html/here-docs.html thanks to cooper12 on reddit
     echo -e "  hiset - A bash history file manager"
-    echo -e "\t Version 0.0.1b01"
+    echo -e "\t Version 0.0.1"
     echo -e "--------------------------------------------------------------------------\n"
     echo -e "  Usage:"
     echo -e "\t hiset [name]\t\t Switchs to history with given session name"
@@ -57,6 +57,8 @@ function __hst_help()
     echo -e '\t$HISET\t\t The current session name.'
     echo -e '\t$HISET_PREFIX\t\t The prefix given to all history files, defaults to ".bash_history_hiset_"'
     echo -e '\t$HISET_DIR\t\t The directory where history files are stored, defaults to "$HOME"'
+    echo -e '\n'
+    echo -e '\t * note that long options may not work on all bsd systems'
 }
 
 function __hst_history()
