@@ -172,8 +172,7 @@ function hiset()
         OPTS=`getopt -o :D:hHlrs: -l delete:,help,history,History,list,reset,search: -- "$@"`  
     fi
     
-    if [ $? != 0 ]
-    then
+    if [ $? != 0 ] ; then
         HST_INVALID=1
     fi
 
