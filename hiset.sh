@@ -136,6 +136,7 @@ function __hiset_search()
 
 function hiset()
 {
+    local HST_BSD=0
     local HST_DELETE=0
     local HST_DELETE_PARAM=""
     local HST_HELP=0
@@ -144,9 +145,33 @@ function hiset()
     local HST_LIST=0
     local HST_RESET=0
     local HST_SEARCH=0
-    local HST_SEARCH_PARAM=""
-
-    OPTS=`getopt -o :D:hHlrs: -l delete:,help,history,History,list,reset,search: -- "$@"`
+    local HST_SEARCH_PARAM=""    
+    
+    # BSD is the only one used atm, the rest are to save googling later
+    case "$OSTYPE" in
+       solaris*)  ;;
+       darwin*)   ;; 
+       linux*)    ;;
+       *bsd*)     HST_BSD=1 ;;
+       *)         ;;
+    esac
+    
+    # This hack by fnj to deal with BSD getopt not being able to deal with long options
+    # In BSD you must either “pkg add getopt”, or build and install /usr/ports/misc/getopt
+    # This adds /usr/local/bin/getopt but leaves /usr/bin/getopt in place
+    # Normally /usr/bin will come first in PATH, so /usr/local/bin/getopt will never be used
+    # Hence the hack
+    # modified by simotek to only apply to BSD and to fall back to no long opts
+    if [ $HST_BSD -eq 1 ] ; then
+        if [ -f /usr/local/bin/getopt ] ; then
+            OPTS=`/usr/local/bin/getopt -o :D:hHlrs: -l delete:,help,history,History,list,reset,search: — “$@”`
+        else
+            OPTS=`getopt -o :D:hHlrs: — “$@”`
+        fi
+    else
+        OPTS=`getopt -o :D:hHlrs: -l delete:,help,history,History,list,reset,search: -- "$@"`  
+    fi
+    
     if [ $? != 0 ]
     then
         HST_INVALID=1
