@@ -1,0 +1,50 @@
+# This is a theme for gitprompt.sh,
+# it uses the default openSUSE bash prompt style with exit status
+
+override_git_prompt_colors() {
+
+HOST_COLOR=$PMT_BRed
+
+if [ "$HOSTNAME" == "Simotek-Top.site" ]; then
+  HOST_COLOR=$PMT_IBlue
+fi
+if [ "$HOSTNAME" == "host2" ]; then
+  HOST_COLOR=$PMT_Yellow
+fi
+if [ "$HOSTNAME" == "hostshouldntchangestuff" ]; then
+  HOST_COLOR=$PMT_BIRed
+fi
+if [ "$HOSTNAME" == "host4" ]; then
+  HOST_COLOR=$PMT_ICyan
+fi
+if [ "$HOSTNAME" == "host5" ]; then
+  HOST_COLOR=$PMT_Green
+fi
+
+# from https://github.com/magicmonty/bash-git-prompt  
+  GIT_PROMPT_THEME_NAME="Single_line_simotek"
+  GIT_PROMPT_BRANCH="${Green}"
+  GIT_PROMPT_UNTRACKED=" ${Cyan}…${ResetColor}"
+  GIT_PROMPT_CHANGED="${Yellow}✚ "
+  GIT_PROMPT_STAGED="${BrightGreen}●"
+  
+  GIT_PROMPT_PREFIX="${Magenta}[${ResetColor}"                 # start of the git info string
+  GIT_PROMPT_SUFFIX="${Magenta}]${ResetColor}"                 # the end of the git info string
+  GIT_PROMPT_SEPARATOR="${Magenta}|${ResetColor}"              # separates each item
+
+  #GIT_PROMPT_START_USER="_LAST_COMMAND_INDICATOR_ ${ResetColor}\u@\h:\w"
+  GIT_PROMPT_START_ROOT="_LAST_COMMAND_INDICATOR_ ${BoldRed}\h:\w"
+
+  GIT_PROMPT_END_USER="$PMT_Purple > ${ResetColor}"
+  GIT_PROMPT_END_ROOT=" # ${ResetColor}"
+
+# I made it like a normal prompt and added HISET support
+GIT_PROMPT_START_USER=$PMT_IGreen'\u'$PMT_Color_Off$PMT_Purple@$PMT_Color_Off$HOST_COLOR'\h'$PMT_Color_Off$PMT_Purple'$(\
+if [ -n "$HISET" ]; then \
+    echo  " ['$PMT_ICyan'$HISET'$PMT_Color_Off$PMT_Purple']"; \
+fi \
+)'"$PMT_Color_Off $PMT_Yellow$PathShort$PMT_Color_Off$PMT_Purple"
+}
+
+reload_git_prompt_colors "Single_line_simotek"
+
