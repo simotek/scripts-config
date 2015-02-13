@@ -24,9 +24,9 @@ fi
 # from https://github.com/magicmonty/bash-git-prompt  
   GIT_PROMPT_THEME_NAME="Single_line_simotek"
   GIT_PROMPT_BRANCH="${Green}"
-  GIT_PROMPT_UNTRACKED=" ${Cyan}…${ResetColor}"
-  GIT_PROMPT_CHANGED="${Yellow}✚ "
-  GIT_PROMPT_STAGED="${BrightGreen}●"
+  GIT_PROMPT_UNTRACKED=" ${Yellow}…${ResetColor}"
+  GIT_PROMPT_CHANGED="${BrightCyan}✚"
+  GIT_PROMPT_STAGED="${BrightMagenta}●"
   
   GIT_PROMPT_PREFIX="${Magenta}[${ResetColor}"                 # start of the git info string
   GIT_PROMPT_SUFFIX="${Magenta}]${ResetColor}"                 # the end of the git info string
@@ -43,7 +43,7 @@ GIT_PROMPT_START_USER=$PMT_IGreen'\u'$PMT_Color_Off$PMT_Purple@$PMT_Color_Off$HO
 if [ -n "$HISET" ]; then \
     echo  " ['$PMT_ICyan'$HISET'$PMT_Color_Off$PMT_Purple']"; \
 fi \
-)'"$PMT_Color_Off $PMT_Yellow$PathShort$PMT_Color_Off$PMT_Purple"
+)'"$PMT_Color_Off $PMT_BYellow$PathShort$PMT_Color_Off$PMT_Purple"
 }
 
 reload_git_prompt_colors "Single_line_simotek"
