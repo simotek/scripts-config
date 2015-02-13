@@ -1,0 +1,123 @@
+# Window Setting
+own_window_argb_visual true
+own_window_argb_value 0
+own_window_type desktop
+own_window yes
+own_window_transparent yes
+own_window_type normal
+own_window_hints sticky,skip_taskbar,skip_pager
+
+
+background no
+maximum_width 320
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# fiddle with window
+use_spacer right
+
+# Update interval in seconds
+update_interval 1
+
+# Minimum size of text area
+minimum_size 350 5
+
+# Draw shades?
+draw_shades yes
+
+
+draw_borders no
+# Stippled borders?
+# stippled_borders 8
+# window.border_inner_margin 4
+border_width 2
+
+
+# Default colors and also border colors, grey90 == #e5e5e5
+default_color white
+default_shade_color black
+default_outline_color white
+
+
+
+# Text alignment, other possible values are commented
+#alignment top_left
+alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+gap_x 200
+gap_y 45
+
+# Text stuff
+draw_outline no # amplifies text if yes
+uppercase no # set to yes if you want all text to be in uppercase
+override_utf8_locale no
+use_xft yes
+xftfont Terminus:size=9
+#xftfont Sans:size=8
+xftalpha 0.8
+
+text_buffer_size 768
+
+########## BEGIN FORMATTED DISPLAY ##########
+TEXT
+${font :size=15}${color red}${alignc}${execi 6000 hostname}${font}${color }
+${font :size=8}${alignc}${color lightgrey}$kernel${font}${color }
+${hr 1}
+${color slate grey}   UpTime: ${alignr}${color lightgrey}$uptime${color }
+
+${font StyleBats:size=15}${font Terminus:size=12}CPU ${font}${hr 2}
+${color slate grey}   CPU:${color } ${cpu cpu1}% ${cpu cpu2}% 
+#${cpu cpu3}% ${cpu cpu4}% 
+#           ${cpu cpu5}% ${cpu cpu6}% ${cpu cpu7}% ${cpu cpu8}% 
+${alignr}${color }$loadavg
+${alignc}${cpugraph cpu0 20,182 000000 ffffff}
+${alignc}${cpugraph cpu1 20,90 000000 ffffff} ${cpugraph cpu2 20,90 000000 ffffff}
+#${alignc}${cpugraph cpu3 20,90 000000 ffffff} ${cpugraph cpu4 20,90 000000 ffffff}
+#${alignc}${cpugraph cpu5 20,90 000000 ffffff} ${cpugraph cpu6 20,90 000000 ffffff}
+#${alignc}${cpugraph cpu7 20,90 000000 ffffff} ${cpugraph cpu8 20,90 000000 ffffff}
+${color slate grey}   Processes: ${color }${alignr}$processes  
+${color slate grey}   Running:   ${color }${alignr}$running_processes
+
+${color slate grey}   Top CPU:
+${color #ddaa00}      ${top name 1}${alignr}${top cpu 1}
+${color lightgrey}      ${top name 2}${alignr}${top cpu 2}
+${color lightgrey}      ${top name 3}${alignr}${top cpu 3}
+${color lightgrey}      ${top name 4}${alignr}${top cpu 4}
+
+${color }${font StyleBats:size=15}${font Terminus:size=12}MEMORY ${font}${hr 2}
+${color slate grey}   RAM: ${alignr}${membar 5,100}
+${color slate grey}   SWAP: ${alignr}${swapbar 5,100}
+
+${color slate grey}   Top Memory:
+${color #ddaa00}      ${top_mem name 1}${alignr}${top_mem mem 1}
+${color lightgrey}      ${top_mem name 2}${alignr}${top_mem mem 2}
+${color lightgrey}      ${top_mem name 3}${alignr}${top_mem mem 3}
+${color lightgrey}      ${top_mem name 4}${alignr}${top_mem mem 4}
+
+${color }${font StyleBats:size=15}${font Terminus:size=12}DISK ${font}${hr 2}
+${alignc}${diskiograph /dev/sda 20,150 000000 ffffff}
+${color slate grey}   ROOT: ${alignr}${fs_bar 5,100 /}
+#${color slate grey}   DATA: ${alignr}${fs_bar 5,100 /mnt/data}
+#${color slate grey}   UBUNTU: ${alignr}${fs_bar 5,100 /mnt/ubuntu}
+#${color slate grey}   USERS: ${alignr}${fs_bar 5,100 /users_ebony}
+#${color slate grey}   WORK: ${alignr}${fs_bar 5,100 /work}
+
+${color }${font StyleBats:size=15}${font Terminus:size=12}NETWORK ${font}${hr 2}
+${color slate grey}   Wireless IP: ${alignr}${color }${addr wlan0}
+${color}      Up: ${color }${upspeed wlan0} k/s
+${alignc}${upspeedgraph eth0 20,150 000000 ffffff}
+${color}      Down: ${color }${downspeed wlan0}k/s${color}
+${alignc}${downspeedgraph wlan0 20,150 000000 ffffff}
+#${color slate grey}   Local IP: ${alignr}${color }${addr eth1}
+#${color}      Up: ${color }${upspeed eth1} k/s
+#${alignc}${upspeedgraph eth1 20,150 000000 ffffff}
+#${color}      Down: ${color }${downspeed eth1}k/s${color}
+#${alignc}${downspeedgraph eth1 20,150 000000 ffffff}
+
+#${color }${font StyleBats:size=15}${font Terminus:size=12}Video ${font}${hr 2}
+#${color lightgrey} NVidia GeForce 360m GPU $alignr${nvidia gpufreq}Mhz
+#Memory $alignr${nvidia memfreq}Mhz Temperature $alignr${nvidia temp}Mhz
