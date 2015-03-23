@@ -64,4 +64,4 @@ fi)'
 
 
 GIT_PROMPT_THEME=Single_line_simotek
-source ~/src/bash-git-prompt/gitprompt.sh
+source ~/src/config/bash-git-prompt/gitprompt.sh
