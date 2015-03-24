@@ -5,7 +5,7 @@
 #     source $CONFIG_DIR/.bashrc_git
 
 # load hiset (Multiple History support)
-source $CONFIG_DIR/hiset
+source $CONFIG_DIR/hiset.sh
 
 
 # original HISET prompt for reference
@@ -61,3 +61,7 @@ else \
   # @2 - Prompt when not in GIT repo
   echo " '$PMT_Yellow$PathShort$PMT_Color_Off$PMT_Purple' \$> '$PMT_Color_Off'"; \
 fi)'
+
+
+GIT_PROMPT_THEME=Single_line_simotek
+source ~/src/config/bash-git-prompt/gitprompt.sh

@@ -27,11 +27,17 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
+# include the 3 colors i use rather then the whole colors file
+Color_Off="\033[0m"
+
+Yellow="\033[0;33m"
+Blue="\033[0;34m" 
 
 function __hst_help()
 {
+    # try - http://www.tldp.org/LDP/abs/html/here-docs.html thanks to cooper12 on reddit
     echo -e "  hiset - A bash history file manager"
-    echo -e "\t Version 0.0.1b01"
+    echo -e "\t Version 0.0.1"
     echo -e "--------------------------------------------------------------------------\n"
     echo -e "  Usage:"
     echo -e "\t hiset [name]\t\t Switchs to history with given session name"
@@ -51,6 +57,8 @@ function __hst_help()
     echo -e '\t$HISET\t\t The current session name.'
     echo -e '\t$HISET_PREFIX\t\t The prefix given to all history files, defaults to ".bash_history_hiset_"'
     echo -e '\t$HISET_DIR\t\t The directory where history files are stored, defaults to "$HOME"'
+    echo -e '\n'
+    echo -e '\t * note that long options may not work on all bsd systems'
 }
 
 function __hst_history()
@@ -64,21 +72,23 @@ function __hst_history()
         LOCAL_PREFIX=".bash_history_hiset_"
     fi
     
-    # As a hack color the colon black, if someone can figure out how to remove it and preserve colors
-    # that would be fantastic
+    34
+    
+    # As a hack color the colon black, if someone can figure out how to remove the colon and preserve colors
+    # that would be fantastic, i guess i should use awk.
     local TMP_GREP_COLORS=$GREP_COLORS
     export GREP_COLORS='se=30'
     
     # First Print out original .bash_history
-    echo -e "\033[01;34mHistory from \033[01;33m.bash_history\033[00m"
+    echo -e "${Blue}History from ${Yellow}.bash_history${Color_Off}"
     grep  -n -T --binary-files=text "" $HOME/.bash_history
     
     pushd $LOCAL_DIR >/dev/null
-    for F in `find . -maxdepth 1 -name "$LOCAL_PREFIX*"`; do
+    for F in $(find . -maxdepth 1 -name "$LOCAL_PREFIX*"); do
         # Leave $HISET till last
         local CUT_FILE=${F#${F:0:${#LOCAL_PREFIX}+2}}
         if [ "$CUT_FILE"!="$HISET" ]; then
-            echo -e "\033[01;34mHistory from \033[01;33m${CUT_FILE}\033[00m"
+            echo -e "${Blue}History from ${Yellow}${CUT_FILE}${Color_Off}"
             grep -n -T --binary-files=text "" $F
         fi
     done
@@ -86,7 +96,7 @@ function __hst_history()
     
     # Print out the current session (Its probably the one the user cares about
     if [ -n "$HISET" ]; then
-        echo -e "\033[01;34mHistory from \033[01;33m${HISET}\033[00m"
+        echo -e "${Blue}History from ${Yellow}${HISET}${Color_Off}"
         grep -n -T --binary-files=text  "" $HOME/$LOCAL_PREFIX$HISET
     fi
     export GREP_COLORS=$TMP_GREP_COLORS
@@ -110,15 +120,15 @@ function __hiset_search()
     export GREP_COLORS='se=30'
     
     # First Print out original .bash_history
-    cat $HOME/.bash_history | grep  -n --label=".bash_history" -H -T --binary-files=text "$1"
+    cat "$HOME"/.bash_history | grep  -n --label=".bash_history" -H -T --binary-files=text "$1"
     
     pushd $LOCAL_DIR >/dev/null
-    for F in `find . -maxdepth 1 -name "$LOCAL_PREFIX*"`; do
+    for F in $(find . -maxdepth 1 -name "$LOCAL_PREFIX*"); do
         # Leave $HISET till last
         local CUT_FILE=${F#${F:0:${#LOCAL_PREFIX}+2}}
         local TMP_COUNT=$(grep -c $1 $F)
         if [ $TMP_COUNT -gt 0 ]; then
-            cat $F | grep -n --label="$CUT_FILE" -H -T --binary-files=text "$1"
+            cat "$F" | grep -n --label="$CUT_FILE" -H -T --binary-files=text "$1"
         fi
     done
     popd >/dev/null
@@ -128,6 +138,7 @@ function __hiset_search()
 
 function hiset()
 {
+    local HST_BSD=0
     local HST_DELETE=0
     local HST_DELETE_PARAM=""
     local HST_HELP=0
@@ -136,11 +147,34 @@ function hiset()
     local HST_LIST=0
     local HST_RESET=0
     local HST_SEARCH=0
-    local HST_SEARCH_PARAM=""
-
-    OPTS=`getopt -o :D:hHlrs: -l delete:,help,history,History,list,reset,search: -- "$@"`
-    if [ $? != 0 ]
-    then
+    local HST_SEARCH_PARAM=""    
+    
+    # BSD is the only one used atm, the rest are to save googling later
+    case "$OSTYPE" in
+       solaris*)  ;;
+       darwin*)   ;; 
+       linux*)    ;;
+       *bsd*)     HST_BSD=1 ;;
+       *)         ;;
+    esac
+    
+    # This hack by fnj to deal with BSD getopt not being able to deal with long options
+    # In BSD you must either “pkg add getopt”, or build and install /usr/ports/misc/getopt
+    # This adds /usr/local/bin/getopt but leaves /usr/bin/getopt in place
+    # Normally /usr/bin will come first in PATH, so /usr/local/bin/getopt will never be used
+    # Hence the hack
+    # modified by simotek to only apply to BSD and to fall back to no long opts
+    if [ $HST_BSD -eq 1 ] ; then
+        if [ -f /usr/local/bin/getopt ] ; then
+            OPTS=`/usr/local/bin/getopt -o :D:hHlrs: -l delete:,help,history,History,list,reset,search: — “$@”`
+        else
+            OPTS=`getopt -o :D:hHlrs: — “$@”`
+        fi
+    else
+        OPTS=`getopt -o :D:hHlrs: -l delete:,help,history,History,list,reset,search: -- "$@"`  
+    fi
+    
+    if [ $? != 0 ] ; then
         HST_INVALID=1
     fi
 
@@ -169,11 +203,11 @@ function hiset()
     done
     
     local LOCAL_DIR=$HISET_DIR
-    if [[ -z "$LOCAL_DIR" ]]; then
+    if [ -z "$LOCAL_DIR" ]; then
         LOCAL_DIR=$HOME
     fi
     local LOCAL_PREFIX=$HISET_PREFIX
-    if [[ -z "$LOCAL_PREFIX" ]]; then
+    if [ -z "$LOCAL_PREFIX" ]; then
         LOCAL_PREFIX=".bash_history_hiset_"
     fi
        
@@ -190,15 +224,15 @@ function hiset()
         __hst_history
     elif [ $HST_LIST -eq 1 ] ; then
         pushd $LOCAL_DIR >/dev/null
-        for F in `find . -maxdepth 1 -name "$LOCAL_PREFIX*"`; do
+        for F in $(find . -maxdepth 1 -name "$LOCAL_PREFIX*"); do
             # Leave $HISET till last
             local CUT_FILE=${F#${F:0:${#LOCAL_PREFIX}+2}}
             
             # output a * next to current
             if [ "$CUT_FILE" == "$HISET" ]; then
-                echo -e "\033[01;33m${CUT_FILE} \033[01;34m*\033[00m"
+                echo -e "${Yellow}${CUT_FILE} ${Blue}*${Color_Off}"
             else
-                echo -e "\033[01;33m${CUT_FILE}\033[00m"
+                echo -e "${Yellow}${CUT_FILE}${Color_Off}"
             fi
         done
         popd >/dev/null
@@ -243,17 +277,17 @@ function _hiset()
 
 
     local LOCAL_DIR=$HISET_DIR
-    if [[ -z "$LOCAL_DIR" ]]; then
+    if [ -z "$LOCAL_DIR" ]; then
         LOCAL_DIR=$HOME
     fi
     local LOCAL_PREFIX=$HISET_PREFIX
-    if [[ -z "$LOCAL_PREFIX" ]]; then
+    if [ -z "$LOCAL_PREFIX" ]; then
         LOCAL_PREFIX=".bash_history_hiset_"
     fi
 
     local HST_COMP=""
     pushd $LOCAL_DIR >/dev/null
-        for F in `find . -maxdepth 1 -name "$LOCAL_PREFIX*"`; do
+        for F in $(find . -maxdepth 1 -name "$LOCAL_PREFIX*"); do
             # Leave $HISET till last
             local CUT_FILE=${F#${F:0:${#LOCAL_PREFIX}+2}}
             
@@ -271,14 +305,14 @@ function _hiset()
     
     local HST_LONG_OPTS="--delete --help --history --History --list --reset --search"
     local HST_SHORT_OPTS="-D -h -H -l -r -s"
-    if [[ "$cur" == --* ]]; then
-        if [[ "$cur" != "--delete" ]]; then
+    if [ "$cur" == --* ]; then
+        if [ "$cur" != "--delete" ]; then
             COMPREPLY=( $(compgen -W "$HST_LONG_OPTS" -- $cur) )
         fi
     fi
     
-    if [[ "$cur" == -* ]]; then
-        if [[ "$cur" != "--delete" ]]; then
+    if [ "$cur" == -* ]; then
+        if [ "$cur" != "--delete" ]; then
             COMPREPLY=( $(compgen -W "$HST_LONG_OPTS $HST_SHORT_OPTS" -- $cur) )
         fi
     fi
