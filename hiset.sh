@@ -237,8 +237,15 @@ function hiset()
         done
         popd >/dev/null
     elif [ $HST_RESET -eq 1 ] ; then
+	# Write old History
+	history -a
+	
         export HISTFILE="$HOME/.bash_history"
         export HISET=""
+
+	# Reload default history
+	history -r $HISTFILE
+
     elif [ $HST_SEARCH -eq 1 ] ; then
         __hiset_search $HST_SEARCH_PARAM
     else
