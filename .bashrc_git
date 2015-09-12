@@ -5,7 +5,8 @@
 #     source $CONFIG_DIR/.bashrc_git
 
 # load hiset (Multiple History support)
-source $CONFIG_DIR/hiset.sh
+HISET_DIR=$HOME/.config/hiset
+source $CONFIG_DIR/hiset
 
 
 # original HISET prompt for reference
@@ -22,6 +23,13 @@ export LESS_TERMCAP_se=$'\E[0m' # end standout-mode
 export LESS_TERMCAP_so=$'\E[01;44;33m' # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m' # end underline
 export LESS_TERMCAP_us=$'\E[01;32m' # begin underline
+
+# not all the machines i have ssh access to have terminology and hence tybg so roll my own
+function my_tybg()
+{
+    echo -n "\033bt\"$1\"\000"
+}
+
 
 #  Customize BASH PS1 prompt to show current GIT repository and branch.
 #  by Mike Stewart - http://MediaDoneRight.com
@@ -42,8 +50,28 @@ Jobs="\j"
 # This PS1 snippet was adopted from code for MAC/BSD I saw from: http://allancraig.net/index.php?option=com_content&view=article&id=108:ps1-export-command-for-git&catid=45:general&Itemid=96
 # I tweaked it to work on UBUNTU 11.04 & 11.10 plus made it mo' better
 
+HOST_COLOR=$PMT_BRed
+
+if [ "$HOSTNAME" == "kappa" ]; then
+  HOST_COLOR=$PMT_IBlue
+fi
+if [ "$HOSTNAME" == "ebony" ]; then
+  HOST_COLOR=$PMT_Yellow
+fi
+if [ "$HOSTNAME" == "opensuse" ]; then
+  HOST_COLOR=$PMT_BIRed
+fi
+if [ "$HOSTNAME" == "nxserver" ]; then
+  HOST_COLOR=$PMT_ICyan
+fi
+if [ "$HOSTNAME" == "rpdweb2-dev-sl.codanad.local" ]; then
+  HOST_COLOR=$PMT_Green
+fi
+
+
+
 # I made it like a normal prompt and added HISET support
-export PS1=$PMT_IGreen'\u'$PMT_Color_Off$PMT_Purple@$PMT_Color_Off$PMT_IBlue'\h'$PMT_Color_Off$PMT_Purple'$(\
+export PS1=$PMT_IGreen'\u'$PMT_Color_Off$PMT_Purple@$PMT_Color_Off$HOST_COLOR'\h'$PMT_Color_Off$PMT_Purple'$(\
 if [ -n "$HISET" ]; then \
     echo  " ['$PMT_ICyan'$HISET'$PMT_Color_Off$PMT_Purple']"; \
 fi \
@@ -63,5 +91,8 @@ else \
 fi)'
 
 
+#export PS1="\[\033[01;33m\]$(ifconfig | grep "inet" | grep -v "127.0.0.1" | awk '{print $2}' | awk -F: '{print $2}') \[\033[01;32m\]\u@\h \[\033[01;34m\]\[\033[01;33m\]\w #\[\033[00m\] "
+
+
 GIT_PROMPT_THEME=Single_line_simotek
-source ~/src/config/bash-git-prompt/gitprompt.sh
+source $CONFIG_DIR/../bash-git-prompt/gitprompt.sh
