@@ -47,3 +47,10 @@ $HISET_PREFIX       The prefix given to all history files, defaults to ".bash_hi
 $HISET_DIR          The directory where history files are stored, defaults to "$HOME"  
 
 ![Searching with hiset -s](http://simotek.net/wp-content/gallery/hiset/hiset-search.jpg "Searching with hiset -s")
+
+
+Fish
+=====
+Note to self, clone the following before starting
+https://github.com/simotek/tackle
+https://github.com/justinmayer/tacklebox
