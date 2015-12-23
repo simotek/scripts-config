@@ -1,4 +1,4 @@
-feh conky hexchat imlib2-loaders imlib2-filters
+feh conky hexchat imlib2-loaders imlib2-filters meld
 
 
 imlib2 (for feh)
