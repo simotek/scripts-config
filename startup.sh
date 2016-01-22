@@ -2,4 +2,4 @@
 
 variety &
 conky &
-/home/simon/src/scripts-config/feh.sh &
+/home/simon/src/config/scripts-config/feh.sh &
