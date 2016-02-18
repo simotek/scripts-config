@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HighlightingStyles SYSTEM "HighlightingStyles-4.3.dtd">
+<!-- Eric5 highlighting styles -->
+<!-- Saved: 2015-11-27, 14:56:55-->
+<!-- Author:  -->
+<HighlightingStyles version="4.3">
+  <Lexer name="Python3">
+    <Style style="0" color="#808080" paper="#000000" font="Monospace,9,-1,0,50,0,0,0,0,0" eolfill="False">Default</Style>
+    <Style style="1" color="#aa00ff" paper="#000000" font="Monospace,9,-1,0,50,0,0,0,0,0" eolfill="False">Comment</Style>
+    <Style style="2" color="#ff557f" paper="#000000" font="Monospace,9,-1,0,50,0,0,0,0,0" eolfill="False">Number</Style>
+    <Style style="3" color="#007000" paper="#000000" font="Monospace,9,-1,0,50,1,0,0,0,0" eolfill="False">Double-quoted string</Style>
+    <Style style="4" color="#00aa00" paper="#000000" font="Monospace,9,-1,0,50,1,0,0,0,0" eolfill="False">Single-quoted string</Style>
+    <Style style="5" color="#ffff00" paper="#000000" font="Monospace,9,-1,0,75,0,0,0,0,0" eolfill="False">Keyword</Style>
+    <Style style="6" color="#ffaa00" paper="#000000" font="Monospace,9,-1,0,50,1,0,0,0,0" eolfill="False">Triple single-quoted string</Style>
+    <Style style="7" color="#ffaa00" paper="#000000" font="Monospace,9,-1,0,50,1,0,0,0,0" eolfill="False">Triple double-quoted string</Style>
+    <Style style="8" color="#ff557f" paper="#000000" font="Monospace,9,-1,0,75,0,0,0,0,0" eolfill="False">Class name</Style>
+    <Style style="9" color="#ff557f" paper="#000000" font="Monospace,9,-1,0,75,0,0,0,0,0" eolfill="False">Function or method name</Style>
+    <Style style="10" color="#8a8882" paper="#000000" font="Monospace,9,-1,0,75,0,0,0,0,0" eolfill="False">Operator</Style>
+    <Style style="11" color="#00aaff" paper="#000000" font="Monospace,9,-1,0,50,0,0,0,0,0" eolfill="False">Identifier</Style>
+    <Style style="12" color="#aa00ff" paper="#000000" font="Monospace,9,-1,0,50,0,0,0,0,0" eolfill="False">Comment block</Style>
+    <Style style="13" color="#ff0000" paper="#000000" font="Monospace,9,-1,0,50,0,0,0,0,0" eolfill="True">Unclosed string</Style>
+    <Style style="14" color="#407090" paper="#000000" font="Monospace,9,-1,0,50,0,0,0,0,0" eolfill="False">Highlighted identifier</Style>
+    <Style style="15" color="#805000" paper="#000000" font="Monospace,9,-1,0,50,0,0,0,0,0" eolfill="False">Decorator</Style>
+  </Lexer>
+</HighlightingStyles>

@@ -1,2 +1,9 @@
-Terminal:
-Cousine
+Older Style:
+Liberation Mono
+
+Newer
+https://github.com/nathco/Office-Code-Pro
+Source code pro
+
+UI:
+Source Sans Pro

@@ -1,4 +1,4 @@
-feh conky hexchat imlib2-loaders imlib2-filters autoconf automake libtool thunderbird filezilla fish alien cmake 
+feh conky hexchat imlib2-loaders imlib2-filters thunderbird filezilla fish 
 
-
+ autoconf automake libtool alien cmake meld
 imlib2 (for feh)

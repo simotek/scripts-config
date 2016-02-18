@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HighlightingStyles SYSTEM "HighlightingStyles-4.3.dtd">
+<!-- Eric5 highlighting styles -->
+<!-- Saved: 2015-11-30, 10:41:44-->
+<!-- Author:  -->
+<HighlightingStyles version="4.3">
+  <Lexer name="Bash">
+    <Style style="0" color="#808080" paper="#0f0f0f" font="Bitstream Vera Sans Mono,9,-1,0,50,0,0,0,0,0" eolfill="False">Default</Style>
+    <Style style="1" color="#ffff00" paper="#ff0000" font="Bitstream Vera Sans Mono,9,-1,0,50,0,0,0,0,0" eolfill="False">Error</Style>
+    <Style style="2" color="#aa00ff" paper="#0f0f0f" font="Bitstream Vera Sans Mono,9,-1,0,50,0,0,0,0,0" eolfill="False">Comment</Style>
+    <Style style="3" color="#ff557f" paper="#0f0f0f" font="Bitstream Vera Sans Mono,9,-1,0,50,0,0,0,0,0" eolfill="False">Number</Style>
+    <Style style="4" color="#ffff00" paper="#0f0f0f" font="Sans Serif,9,-1,0,75,0,0,0,0,0" eolfill="False">Keyword</Style>
+    <Style style="5" color="#008c00" paper="#0f0f0f" font="Bitstream Vera Sans Mono,9,-1,0,50,0,0,0,0,0" eolfill="False">Double-quoted string</Style>
+    <Style style="6" color="#00ff7f" paper="#0f0f0f" font="Bitstream Vera Sans Mono,9,-1,0,50,0,0,0,0,0" eolfill="False">Single-quoted string</Style>
+    <Style style="7" color="#7c7c7c" paper="#0f0f0f" font="Bitstream Vera Sans Mono,9,-1,0,75,0,0,0,0,0" eolfill="False">Operator</Style>
+    <Style style="8" color="#00aaff" paper="#0f0f0f" font="Bitstream Vera Sans Mono,9,-1,0,50,0,0,0,0,0" eolfill="False">Identifier</Style>
+    <Style style="9" color="#ff557f" paper="#0f0f0f" font="Bitstream Vera Sans Mono,9,-1,0,50,0,0,0,0,0" eolfill="False">Scalar</Style>
+    <Style style="10" color="#aaff00" paper="#0f0f0f" font="Bitstream Vera Sans Mono,9,-1,0,50,0,0,0,0,0" eolfill="False">Parameter expansion</Style>
+    <Style style="11" color="#ffff00" paper="#0f0f0f" font="Bitstream Vera Sans Mono,9,-1,0,50,0,0,0,0,0" eolfill="False">Backticks</Style>
+    <Style style="12" color="#aaaa7f" paper="#0f0f0f" font="Bitstream Vera Sans Mono,9,-1,0,50,0,0,0,0,0" eolfill="False">Here document delimiter</Style>
+    <Style style="13" color="#7f007f" paper="#0f0f0f" font="Bitstream Vera Sans Mono,9,-1,0,50,0,0,0,0,0" eolfill="True">Single-quoted here document</Style>
+  </Lexer>
+</HighlightingStyles>
