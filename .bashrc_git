@@ -6,7 +6,7 @@
 
 # load hiset (Multiple History support)
 HISET_DIR=$HOME/.config/hiset
-source $CONFIG_DIR/hiset
+source $CONFIG_DIR/hiset.sh
 
 
 # original HISET prompt for reference
@@ -93,6 +93,13 @@ fi)'
 
 #export PS1="\[\033[01;33m\]$(ifconfig | grep "inet" | grep -v "127.0.0.1" | awk '{print $2}' | awk -F: '{print $2}') \[\033[01;32m\]\u@\h \[\033[01;34m\]\[\033[01;33m\]\w #\[\033[00m\] "
 
-
-GIT_PROMPT_THEME=Single_line_simotek
-source $CONFIG_DIR/../bash-git-prompt/gitprompt.sh
+if [ -n "${HOSTTYPE}" ]
+then
+  if [ "${HOSTTYPE}" == "sparc" ] || [ "${HOSTTYPE}" == "sun4" ]
+  then
+    export IV=1
+  else
+    GIT_PROMPT_THEME=Single_line_simotek
+    source $CONFIG_DIR/../bash-git-prompt/gitprompt.sh
+  fi
+fi

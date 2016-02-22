@@ -3,7 +3,7 @@ own_window_argb_visual true
 own_window_argb_value 0
 own_window_type desktop
 own_window yes
-own_window_transparent yes
+own_window_transparent no
 own_window_type normal
 own_window_hints sticky,skip_taskbar,skip_pager
 
@@ -35,9 +35,9 @@ border_width 2
 
 
 # Default colors and also border colors, grey90 == #e5e5e5
-default_color white
-default_shade_color black
-default_outline_color white
+default_color ECF0F1
+default_shade_color 10161c
+default_outline_color 2C3E50
 
 
 
@@ -56,7 +56,7 @@ draw_outline no # amplifies text if yes
 uppercase no # set to yes if you want all text to be in uppercase
 override_utf8_locale no
 use_xft yes
-xftfont Terminus:size=9
+xftfont Source Sans Pro:size=10
 #xftfont Sans:size=8
 xftalpha 0.8
 
@@ -64,59 +64,63 @@ text_buffer_size 768
 
 ########## BEGIN FORMATTED DISPLAY ##########
 TEXT
-${font :size=15}${color red}${alignc}${execi 6000 hostname}${font}${color }
-${font :size=8}${alignc}${color lightgrey}$kernel${font}${color }
-${hr 1}
-${color slate grey}   UpTime: ${alignr}${color lightgrey}$uptime${color }
+#${color slate grey}   UpTime: ${alignr}${color lightgrey}$uptime${color }
+#
+${color #1ABC9C}${font Source Sans Pro Bold:size=15}CPU ${font}${hr 2}
+${color #3498D8}   ${font Source Sans Pro Bold:size=10}CPU:${font Office Code Pro:size=9}${color #9B59B6} ${cpu cpu1}% ${cpu cpu2}% ${cpu cpu3}% ${cpu cpu4}% ${cpu cpu5}% ${cpu cpu6}% ${cpu cpu7}% ${cpu cpu8}%${font}
 
-${font StyleBats:size=15}${font Terminus:size=12}CPU ${font}${hr 2}
-${color slate grey}   CPU:${color } ${cpu cpu1}% ${cpu cpu2}% 
-#${cpu cpu3}% ${cpu cpu4}% 
-#           ${cpu cpu5}% ${cpu cpu6}% ${cpu cpu7}% ${cpu cpu8}% 
-${alignr}${color }$loadavg
-${alignc}${cpugraph cpu0 20,182 000000 ffffff}
-${alignc}${cpugraph cpu1 20,90 000000 ffffff} ${cpugraph cpu2 20,90 000000 ffffff}
-#${alignc}${cpugraph cpu3 20,90 000000 ffffff} ${cpugraph cpu4 20,90 000000 ffffff}
-#${alignc}${cpugraph cpu5 20,90 000000 ffffff} ${cpugraph cpu6 20,90 000000 ffffff}
-#${alignc}${cpugraph cpu7 20,90 000000 ffffff} ${cpugraph cpu8 20,90 000000 ffffff}
-${color slate grey}   Processes: ${color }${alignr}$processes  
-${color slate grey}   Running:   ${color }${alignr}$running_processes
+${alignr}${color #9B59B6}${font Office Code Pro:size=8}$loadavg${font}
+${alignc}${color #2C3E50}${cpugraph cpu0 20,290 9B59B6 F1C40F -t -l}
+${alignc}${cpugraph cpu1 20,70 9B59B6 3498D8 -t -l} ${cpugraph cpu2 20,70 9B59B6 2ECC71 -t -l} ${cpugraph cpu3 20,70 9B59B6 3498D8 -t -l} ${cpugraph cpu4 20,70 9B59B6 2ECC71 -t -l}
+${alignc}${cpugraph cpu5 20,70 9B59B6 2ECC71 -t -l} ${cpugraph cpu6 20,70 9B59B6 3498D8 -t -l} ${cpugraph cpu7 20,70 9B59B6 2ECC71 -t -l} ${cpugraph cpu8 20,70 9B59B6 3498D8 -t -l}
 
-${color slate grey}   Top CPU:
-${color #ddaa00}      ${top name 1}${alignr}${top cpu 1}
-${color lightgrey}      ${top name 2}${alignr}${top cpu 2}
-${color lightgrey}      ${top name 3}${alignr}${top cpu 3}
-${color lightgrey}      ${top name 4}${alignr}${top cpu 4}
+${color #3498D8}   Processes: ${color #9B59B6}${font Office Code Pro:size=8}${alignr}$processes${font }
+${color #3498D8}   Running: ${color #9B59B6}${font Office Code Pro:size=8}${alignr}$running_processes${font }
+${color #3498D8}   Top CPU:
+${color #C0392B}      ${font Source Sans Pro Bold:size=10}${top name 1}${alignr}${font Office Code Pro Bold:size=9}${top cpu 1}${font}
+${color #9B59B6}      ${top name 2}${alignr}${font Office Code Pro:size=9}${top cpu 2}${font}
+${color #9B59B6}      ${top name 3}${alignr}${font Office Code Pro:size=9}${top cpu 3}${font}
+${color #9B59B6}      ${top name 4}${alignr}${font Office Code Pro:size=9}${top cpu 4}${font}
 
-${color }${font StyleBats:size=15}${font Terminus:size=12}MEMORY ${font}${hr 2}
-${color slate grey}   RAM: ${alignr}${membar 5,100}
-${color slate grey}   SWAP: ${alignr}${swapbar 5,100}
+${color #1ABC9C}${font Source Sans Pro Bold:size=15}MEMORY ${font}${hr 2}
+${color #3498D8}   RAM: ${alignr}${membar 5,100}
+${color #3498D8}   SWAP: ${alignr}${swapbar 5,100}
+${color #3498D8}   Top Memory:
+${color #C0392B}      ${font Source Sans Pro Bold:size=10}${top_mem name 1}${alignr}${font Office Code Pro Bold:size=9}${top_mem mem 1}${font}
+${color #9B59B6}      ${top_mem name 2}${alignr}${font Office Code Pro:size=9}${top_mem mem 2}${font}
+${color #9B59B6}      ${top_mem name 3}${alignr}${font Office Code Pro:size=9}${top_mem mem 3}${font}
+${color #9B59B6}      ${top_mem name 4}${alignr}${font Office Code Pro:size=9}${top_mem mem 4}${font}
 
-${color slate grey}   Top Memory:
-${color #ddaa00}      ${top_mem name 1}${alignr}${top_mem mem 1}
-${color lightgrey}      ${top_mem name 2}${alignr}${top_mem mem 2}
-${color lightgrey}      ${top_mem name 3}${alignr}${top_mem mem 3}
-${color lightgrey}      ${top_mem name 4}${alignr}${top_mem mem 4}
+${color #1ABC9C}${font Source Sans Pro Bold:size=15}DISK ${font}${hr 2}
+${alignc}${color #2C3E50}${diskiograph /dev/sda 20,150 9B59B6 2ECC71 -l -t}
+${color #3498D8}   ROOT: ${alignr}${fs_bar 5,100 /}
+${color #3498D8}   DATA: ${alignr}${fs_bar 5,100 /mnt/data}
+${color #3498D8}   UBUNTU: ${alignr}${fs_bar 5,100 /mnt/ubuntu}
+${color #3498D8}   USERS: ${alignr}${fs_bar 5,100 /users_ebony}
+${color #3498D8}   WORK: ${alignr}${fs_bar 5,100 /work}
 
-${color }${font StyleBats:size=15}${font Terminus:size=12}DISK ${font}${hr 2}
-${alignc}${diskiograph /dev/sda 20,150 000000 ffffff}
-${color slate grey}   ROOT: ${alignr}${fs_bar 5,100 /}
-#${color slate grey}   DATA: ${alignr}${fs_bar 5,100 /mnt/data}
-#${color slate grey}   UBUNTU: ${alignr}${fs_bar 5,100 /mnt/ubuntu}
-#${color slate grey}   USERS: ${alignr}${fs_bar 5,100 /users_ebony}
-#${color slate grey}   WORK: ${alignr}${fs_bar 5,100 /work}
+${color #1ABC9C}${font Source Sans Pro Bold:size=15}NETWORK ${font}${hr 2}
+${color #3498D8}   Codan IP (ens4): ${alignr}${color }${addr ens4}
+${color}      Up: ${color }${upspeed ens4}
+#${alignc}${upspeedgraph eth0 20,150 000000 ffffff}
+${color}      Down: ${color }${downspeed eth1}${color}
+${color #3498D8}   Local IP 1 (eth1): ${alignr}${color }${addr eth1}
+${color}      Up: ${color }${upspeed eth1}
+#${alignc}${upspeedgraph eth0 20,150 000000 ffffff}
+${color}      Down: ${color }${downspeed eth1}${color}
+${color #3498D8}   Local IP 2 (enp55s9): ${alignr}${color }${addr enp55s9}
+${color}      Up: ${color }${upspeed enp55s9}
+#${alignc}${upspeedgraph eth0 20,150 000000 ffffff}
+${color}      Down: ${color }${downspeed enp55s9}${color}
 
-${color }${font StyleBats:size=15}${font Terminus:size=12}NETWORK ${font}${hr 2}
-${color slate grey}   Wireless IP: ${alignr}${color }${addr wlan0}
-${color}      Up: ${color }${upspeed wlan0} k/s
-${alignc}${upspeedgraph eth0 20,150 000000 ffffff}
-${color}      Down: ${color }${downspeed wlan0}k/s${color}
-${alignc}${downspeedgraph wlan0 20,150 000000 ffffff}
+
+#${alignc}${downspeedgraph eth0 20,150 000000 ffffff}
 #${color slate grey}   Local IP: ${alignr}${color }${addr eth1}
-#${color}      Up: ${color }${upspeed eth1} k/s
+#${color}      Up: ${color }${upspeed eth1} k/s${color}
 #${alignc}${upspeedgraph eth1 20,150 000000 ffffff}
 #${color}      Down: ${color }${downspeed eth1}k/s${color}
 #${alignc}${downspeedgraph eth1 20,150 000000 ffffff}
+#${color slate grey}   Local IP 2: ${alignr}${color }${addr enp55s9}
 
 #${color }${font StyleBats:size=15}${font Terminus:size=12}Video ${font}${hr 2}
 #${color lightgrey} NVidia GeForce 360m GPU $alignr${nvidia gpufreq}Mhz
