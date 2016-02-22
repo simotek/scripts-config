@@ -1,0 +1,22 @@
+#              #################
+#              # - Template: - #
+#              #################
+#       (created 09-11-2010 by Ken Berns)
+#(For questions and suggestions -> ken.berns@yahoo.de)
+#
+${hr 2}
+${voffset -3}${font Santana:size=10:style=bold}${color3}[--datatype=CC]${color}${voffset -2}${font Santana:size=12:style=bold}${goto 140}Temp:  ${color4}[--datatype=HT]${color}${goto 300}Wind:${goto 520}Info:${font}${color}${font Santana:size=10}
+${voffset 3}${goto 140}Feels like:  ${color3}[--datatype=LT --night]${goto 300}${color4}Speed:  ${color5}[--datatype=WS]${goto 520}${color3}Sunrise:  [--datatype=SR]
+${voffset 3}${goto 140}${color4}UV:  ${color5}[--datatype=UI] - ${color5}[--datatype=UT] ${goto 300}${color4}Direction:  ${color5}[--datatype=WD] ${goto 520}${color3}Sunset:  [--datatype=SS]
+${voffset 3}${goto 140}${color2}${color4}Rainfall:  ${color9}[--startday=0 --datatype=PC --night] ${goto 300}${color4}Visibility:  ${color5} [--datatype=VI] ${goto 520}${color3}Daylight:  [--datatype=DL]${color}
+${voffset 3}${goto 140}${color2}Humidity:  ${color5}[--datatype=HM]${goto 300}${color4}Pressure:  ${color5}[--datatype=BD]${color} ${goto 520}${color3}Moon:  [--datatype=MP]${color}               
+${goto 420}${voffset -80}${font ConkyWind:size=36}[--datatype=BS]${font}
+${image [--datatype=WI] -p 0,30 -s 80x80}${image [--datatype=MI] -p 630,25 -s 50x50}
+${voffset 25}${hr 2}${font}${color}
+${font Santana:style=bold:size=14}${voffset -4}${goto 50}[--datatype=DW --startday=1 --shortweekday] ${goto 215}[--datatype=DW --startday=2 --shortweekday] ${goto 380}[--datatype=DW --startday=3 --shortweekday] ${goto 545}[--datatype=DW --startday=4 --shortweekday]
+${image [--datatype=WI --startday=1] -p 20,120 -s 72x72}${image [--datatype=WI --startday=2] -p 185,120 -s 72x72}${image [--datatype=WI --startday=3] -p 350,120 -s 72x72}${image [--datatype=WI --startday=4] -p 515,120 -s 72x72}${font}${color}
+${voffset 0}${goto 100}[--datatype=PC --startday=1 --hideunits --centeredwidth=3] ${goto 265}[--datatype=PC --startday=2 --hideunits --centeredwidth=3] ${goto 430}[--datatype=PC --startday=3 --hideunits --centeredwidth=3] ${goto 595}[--datatype=PC --startday=4 --hideunits --centeredwidth=3]
+${voffset 20}${font Santana:size=10:style=bold}${goto 20}[--datatype=CC --startday=1 --hideunits --centeredwidth=3] ${goto 185}[--datatype=CC --startday=2 --hideunits --centeredwidth=3] ${goto 350}[--datatype=CC --startday=3 --hideunits --centeredwidth=3] ${goto 515}[--datatype=CC --startday=4 --hideunits --centeredwidth=3]${font}
+${voffset 10}${goto 40}[--datatype=LT --startday=1 --hideunits --centeredwidth=3]/[--datatype=HT --startday=1 --hideunits --centeredwidth=3] ${goto 205}[--datatype=LT --startday=2 --hideunits --centeredwidth=3]/[--datatype=HT --startday=2 --hideunits --centeredwidth=3] ${goto 370}[--datatype=LT --startday=3 --hideunits --centeredwidth=3]/[--datatype=HT --startday=3 --hideunits --centeredwidth=3] ${goto 535}[--datatype=LT --startday=4 --hideunits --centeredwidth=3]/[--datatype=HT --startday=4 --hideunits --centeredwidth=3]
+${voffset -5}${hr 2}
+${font Santana:size=8}Place:  [--datatype=CN]/[--datatype=CO] | Station:  [--datatype=OB]

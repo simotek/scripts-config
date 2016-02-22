@@ -1,0 +1,49 @@
+                          #####################
+                          # - Instructions: - #
+                          #####################
+                    (created 09-11-2010 by Ken Berns)
+             (for questions and suggestions -> ken.berns@yahoo.de)
+
+1. Install all fonts of the folder "Fonts".
+	- Doubleclick
+	- 'Install font'
+
+2. Open Terminal and type in following lines:
+	$ sudo add-apt-repository ppa:conkyhardcore/ppa
+	$ sudo apt-get update && sudo apt-get install conky-all conkyemail conkyforecast
+
+3. Go to the page 'http://www.weather.com/services/xmloap.html'.
+	- 'Sign up'
+	- Filling in forms
+	- Wait for email
+	- In this email are an ID and a Key,
+  	  which ones you need later. So be open.
+
+4. Open the file "conkyForecast.config" and paste the Key and ID,
+   from the email just received, in the appropriate rows.
+
+5. Open the file "/Conky/mail" and insert down below the relevant informations
+   ([POP3_SERVER] [LOGIN_NAME] [PASSWORD]) -> WITHOUT the box brackets!
+
+6. Go to the page 'http://de.weather.com/' 
+   and search for the NAME of your city (Important! not the ZIP!).
+	- In the address field is now a code like this: 'GMXX3362'.
+          This is the weather-ID
+	- Copy this code.
+
+7. Open the file "/Conky/weather" and paste the Weather-ID just copied in
+   the appropriate field ([WEATHER_ID]) -> WITHOUT the brackets!
+
+8. Copy the folders "bin", "Conky" and the file "conkyForecast.config" into your
+   Home directory ('/home/[NAME]/').
+	- Make the folders and the data you just copied, invisible. (IMPORTANT!)
+			-> Rename it and write a point before the name (.).
+
+9. Add the command "/home/[NAME]/.bin/conky/startconky.sh" as startup-command.
+	- For ubuntu:
+	- In the panel 'System' -> 'Settings' -> 'Startup Programs'
+	- 'Add'
+	- Name: Conky - command: /home/[NAME]/.bin/conky/startconky.sh
+
+10. Restart computer! Have fun! :)
+
