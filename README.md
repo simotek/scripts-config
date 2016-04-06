@@ -48,6 +48,9 @@ $HISET_DIR          The directory where history files are stored, defaults to "$
 
 ![Searching with hiset -s](http://simotek.net/wp-content/gallery/hiset/hiset-search.jpg "Searching with hiset -s")
 
+GPG Fingerprint
+===============
+5B87 DB9D 88DC F606 E489 CEC5 0922 C246 02F0 014B
 
 Fish
 =====
