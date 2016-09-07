@@ -1,4 +1,4 @@
-feh conky hexchat imlib2-loaders imlib2-filters thunderbird filezilla fish htop tree git svn osc
+feh conky hexchat imlib2-loaders imlib2-filters thunderbird filezilla fish htop tree git svn osc grc
 
  autoconf automake libtool alien cmake meld
 imlib2 (for feh)
