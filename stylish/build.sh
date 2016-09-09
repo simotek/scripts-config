@@ -32,8 +32,15 @@ function __build_template()
     
     cp -v `dirname $0`/template/`basename $1` $OUT_FILE
     
-    echo "sed -i s/@@LINK@@/$SYL_LINK_COLOR/g $OUT_FILE"
+    #echo "sed -i s/@@LINK@@/$SYL_LINK_COLOR/g $OUT_FILE"
+    sed -i "s/@@TEXT@@/$SYL_TEXT_COLOR/g" $OUT_FILE
     sed -i "s/@@LINK@@/$SYL_LINK_COLOR/g" $OUT_FILE
+    sed -i "s/@@LINK-VISITED@@/$SYL_LINK_VISITED_COLOR/g" $OUT_FILE
+    sed -i "s/@@LINK-HOVER@@/$SYL_LINK_HOVER_COLOR/g" $OUT_FILE
+    sed -i "s/@@BORDER@@/$SYL_BORDER_COLOR/g" $OUT_FILE
+    sed -i "s/@@BACKGROUND@@/$SYL_BACKGROUND_COLOR/g" $OUT_FILE
+    #echo "sed -i s/@@BACKGROUND@@/$SYL_BACKGROUND/g $OUT_FILE"
+    #sed -i "s/@@BACKGROUND@@/$SYL_BACKGROUND/g" $OUT_FILE
 }
 
 HST_CONF=0
