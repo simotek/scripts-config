@@ -9,7 +9,7 @@ own_window_hints sticky,skip_taskbar,skip_pager
 
 
 background no
-maximum_width 320
+maximum_width 306
 
 # Use double buffering (reduces flicker, may not work for everyone)
 double_buffer yes
@@ -21,7 +21,7 @@ use_spacer right
 update_interval 1
 
 # Minimum size of text area
-minimum_size 350 5
+minimum_size 320 5
 
 # Draw shades?
 draw_shades yes
@@ -67,12 +67,11 @@ TEXT
 #${color slate grey}   UpTime: ${alignr}${color lightgrey}$uptime${color }
 #
 ${color #1ABC9C}${font Source Sans Pro Bold:size=15}CPU ${font}${hr 2}
-${color #3498D8}   ${font Source Sans Pro Bold:size=10}CPU:${font Office Code Pro:size=9}${color #9B59B6} ${cpu cpu1}% ${cpu cpu2}% ${cpu cpu3}% ${cpu cpu4}% ${cpu cpu5}% ${cpu cpu6}% ${cpu cpu7}% ${cpu cpu8}%${font}
+${color #3498D8}   ${font Source Sans Pro Bold:size=10}CPU:${font Office Code Pro:size=9}${color #9B59B6} ${cpu cpu1}% ${cpu cpu2}% ${cpu cpu3}% ${cpu cpu4}%${font}
 
 ${alignr}${color #9B59B6}${font Office Code Pro:size=8}$loadavg${font}
 ${alignc}${color #2C3E50}${cpugraph cpu0 20,290 9B59B6 F1C40F -t -l}
 ${alignc}${cpugraph cpu1 20,70 9B59B6 3498D8 -t -l} ${cpugraph cpu2 20,70 9B59B6 2ECC71 -t -l} ${cpugraph cpu3 20,70 9B59B6 3498D8 -t -l} ${cpugraph cpu4 20,70 9B59B6 2ECC71 -t -l}
-${alignc}${cpugraph cpu5 20,70 9B59B6 2ECC71 -t -l} ${cpugraph cpu6 20,70 9B59B6 3498D8 -t -l} ${cpugraph cpu7 20,70 9B59B6 2ECC71 -t -l} ${cpugraph cpu8 20,70 9B59B6 3498D8 -t -l}
 
 ${color #3498D8}   Processes: ${color #9B59B6}${font Office Code Pro:size=8}${alignr}$processes${font }
 ${color #3498D8}   Running: ${color #9B59B6}${font Office Code Pro:size=8}${alignr}$running_processes${font }
@@ -94,24 +93,22 @@ ${color #9B59B6}      ${top_mem name 4}${alignr}${font Office Code Pro:size=9}${
 ${color #1ABC9C}${font Source Sans Pro Bold:size=15}DISK ${font}${hr 2}
 ${alignc}${color #2C3E50}${diskiograph /dev/sda 20,150 9B59B6 2ECC71 -l -t}
 ${color #3498D8}   ROOT: ${alignr}${fs_bar 5,100 /}
-${color #3498D8}   DATA: ${alignr}${fs_bar 5,100 /mnt/data}
-${color #3498D8}   UBUNTU: ${alignr}${fs_bar 5,100 /mnt/ubuntu}
-${color #3498D8}   USERS: ${alignr}${fs_bar 5,100 /users_ebony}
-${color #3498D8}   WORK: ${alignr}${fs_bar 5,100 /work}
+${color #3498D8}   HOME: ${alignr}${fs_bar 5,100 /home}
+${color #3498D8}   OPT : ${alignr}${fs_bar 5,100 /opt}
 
 ${color #1ABC9C}${font Source Sans Pro Bold:size=15}NETWORK ${font}${hr 2}
-${color #3498D8}   Codan IP (ens4): ${alignr}${color }${addr ens4}
-${color}      Up: ${color }${upspeed ens4}
+${color #3498D8}   Wired (em1): ${alignr}${color }${addr em1}
+${color}      Up: ${color }${upspeed em1}
 #${alignc}${upspeedgraph eth0 20,150 000000 ffffff}
-${color}      Down: ${color }${downspeed eth1}${color}
-${color #3498D8}   Local IP 1 (eth1): ${alignr}${color }${addr eth1}
-${color}      Up: ${color }${upspeed eth1}
+${color}      Down: ${color }${downspeed em1}${color}
+${color #3498D8}   Wireless (wlan0): ${alignr}${color }${addr wlan0}
+${color}      Up: ${color }${upspeed wlan0}
 #${alignc}${upspeedgraph eth0 20,150 000000 ffffff}
-${color}      Down: ${color }${downspeed eth1}${color}
-${color #3498D8}   Local IP 2 (enp55s9): ${alignr}${color }${addr enp55s9}
-${color}      Up: ${color }${upspeed enp55s9}
+${color}      Down: ${color }${downspeed wlan0}${color}
+${color #3498D8}   Phone (enp0s20u2): ${alignr}${color }${addr enp0s20u2}
+${color}      Up: ${color }${upspeed enp0s20u2}
 #${alignc}${upspeedgraph eth0 20,150 000000 ffffff}
-${color}      Down: ${color }${downspeed enp55s9}${color}
+${color}      Down: ${color }${downspeed enp0s20u2}${color}
 
 
 #${alignc}${downspeedgraph eth0 20,150 000000 ffffff}
