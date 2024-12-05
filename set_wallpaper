@@ -117,11 +117,24 @@ if [ "`echo $DESKTOP | grep Enlightenment`" ]; then
     #   replaced yet then the wallpaper will get set back to the theme one causing ugly artifacts
     LAST_WALLPAPER_FILE="$HOME/.config/variety/.enlightenment_last_wallpaper.txt"
     LAST_WALLPAPER_FILE2="$HOME/.config/variety/.enlightenment_last_wallpaper2.txt"
+    LAST_WALLPAPER_FILE3="$HOME/.config/variety/.enlightenment_last_wallpaper3.txt"
+    LAST_WALLPAPER_FILE4="$HOME/.config/variety/.enlightenment_last_wallpaper4.txt"
+
 
     
     if [ -e $LAST_WALLPAPER_FILE ]; then
       if [ -e $LAST_WALLPAPER_FILE2 ]; then
-        find $OUTPUT_DIR -name "variety_wallpaper*.*" | grep -v "$OFILE.edj" | grep -v $(cat $LAST_WALLPAPER_FILE) | grep -v $(cat $LAST_WALLPAPER_FILE2) | xargs rm
+        if [ -e $LAST_WALLPAPER_FILE3 ]; then
+          if [ -e $LAST_WALLPAPER_FILE4 ]; then
+            find $OUTPUT_DIR -name "variety_wallpaper*.*" | grep -v "$OFILE.edj" | grep -v $(cat $LAST_WALLPAPER_FILE) | grep -v $(cat $LAST_WALLPAPER_FILE2) | grep -v $(cat $LAST_WALLPAPER_FILE3) | grep -v $(cat $LAST_WALLPAPER_FILE4) | xargs rm
+          else
+            find $OUTPUT_DIR -name "variety_wallpaper*.*" | grep -v "$OFILE.edj" | grep -v $(cat $LAST_WALLPAPER_FILE) | grep -v $(cat $LAST_WALLPAPER_FILE2) | grep -v $(cat $LAST_WALLPAPER_FILE3) | xargs rm
+          fi
+          cat "$LAST_WALLPAPER_FILE3" > $LAST_WALLPAPER_FILE4
+        else
+          find $OUTPUT_DIR -name "variety_wallpaper*.*" | grep -v "$OFILE.edj" | grep -v $(cat $LAST_WALLPAPER_FILE) | grep -v $(cat $LAST_WALLPAPER_FILE2) | xargs rm
+        fi
+        cat "$LAST_WALLPAPER_FILE2" > $LAST_WALLPAPER_FILE3
       else
         find $OUTPUT_DIR -name "variety_wallpaper*.*" | grep -v "$OFILE.edj" | grep -v $(cat $LAST_WALLPAPER_FILE) | xargs rm
       fi
